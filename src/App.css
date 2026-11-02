@@ -1,0 +1,11 @@
+.App {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  padding: 40px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #fafafa;
+  min-height: 100vh;
+}
