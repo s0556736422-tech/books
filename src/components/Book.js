@@ -1,7 +1,8 @@
+import { getValue } from "@testing-library/user-event/dist/utils"
 import "./Book.css"
 import { useState } from "react"
 function Book(props){
-    const {name, author="anonymous", cost, amount, precent=0}=props
+    const {name, author="anonymous", cost, amount, precent=0, rating, poeple }=props
     const[isSelected, setIsSelected]=useState(false)
     const[stock, setStock]=useState(amount)
     return <div className={isSelected?"book selected":"book"}>
@@ -21,7 +22,8 @@ function Book(props){
     alert('המוצר נוסף לסל')
 }>העבר לסל</button>
 <button onClick={()=>setStock(stock+Number(prompt("כמה ספרים ברצונך להוסיף?")))}>הוסף ספרים למלאי</button>
-
+<input type="range" min={1} max={5} onChange={e=>props.setListBook(p=>p.map(b=>b.name===name?{...b, rating:rating+Number(e.target.value),poeple:poeple+1}:b))}></input>
+<p>your level:{(Number(rating)/Number(poeple)).toFixed(2)}</p>
     </div>
 }
 Book.defaultProps={author:"anonymous", precent:0}
